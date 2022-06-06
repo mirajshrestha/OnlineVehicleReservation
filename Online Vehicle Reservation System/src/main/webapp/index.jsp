@@ -12,6 +12,7 @@
 <title>Online Vehicle Reservation</title>
 </head>
 <body>
+Hello
 	<div class="Rent">
         <h1>Rent a Vehicle</h1><br>
         <div class="form"> 
