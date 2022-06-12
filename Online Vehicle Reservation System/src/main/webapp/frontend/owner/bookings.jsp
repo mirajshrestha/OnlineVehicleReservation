@@ -77,7 +77,7 @@
 				<td><%=rs.getString("for_date")%></td>
 				<td><%=rs.getString("booked_days")%> day(s)</td>
 				<td>Rs. <%=rs.getString("total_fare")%></td>
-				<td><a href="" target="_blank" class="btn"><i class="fa fa-user"></i> User Details</a></td>
+				<td><a href="user-details.jsp?user_id=<%= rs.getInt("id") %>" target="_blank" class="btn"><i class="fa fa-user"></i> User Details</a></td>
 			</tr>
 		
 		
