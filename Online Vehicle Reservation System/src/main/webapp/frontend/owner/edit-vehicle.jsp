@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" href="owner.css">
 <title>Insert title here</title>
 </head>
 <body>
@@ -18,7 +19,34 @@ try {
 			ResultSet rs = pst.executeQuery();
 			while(rs.next()){
 %>
-
+<header>
+	 <nav class="nav-bar">
+                    <nav class="main-style">
+                        <div class="logo-style">
+                            <a href="">
+                                <h2 class="title-style">
+                                    <span>O</span>nline<span>V</span>ehicle<span>R</span>eservation
+                                </h2>
+                            </a>
+                        </div>
+                        <div class="menu-style">
+                            <ul class="tab-style">
+                                <li><a href="">Home</a></li>
+                                <li><a href="">Get a Quote</a></li>
+                                <li><a href="../owner/login.jsp">Hi, ${owner_name}</a></li>
+                    <li><form action="<%= request.getContextPath() %>/ownerLogout">
+					<input type = "submit" value = "Logout" style="cursor: pointer; padding: 16px 32px; border: none;">
+					</form>
+					</li>
+                            </ul>
+                        </div>
+                    </nav>
+                <nav>
+                    <div>
+                        <h1>Edit Vehicle</h1>
+                    </div>
+                </nav>
+            </header>
 <div class="container col-md-5">
 	<div class="card">
 		<div class="card-body">
@@ -41,11 +69,11 @@ try {
 					</tr>
 					<tr>
 						<th><label>From Date: </label></th>
-						<td><input type="date" name="from_date" class="datepicker" value="<%=rs.getString(5) %>"></td>
+						<td><input type="date" name="from_date" class="datepicker" value="<%=rs.getString(5) %>" id="disable_date" onchange="disableAnother()"></td>
 					</tr>
 					<tr>
 						<th><label>To Date: </label></th>
-						<td><input type="date" name="to_date" class="datepicker" value="<%=rs.getString(6) %>"></td>
+						<td><input type="date" name="to_date" class="datepicker" value="<%=rs.getString(6) %>" id="next_date"></td>
 					</tr>
 					<tr>
 						<th><label>Vehicle Current Location: </label></th>
@@ -95,5 +123,29 @@ try {
 <%}}
 catch(Exception e){						
 	}%>
+	<script type="text/javascript">
+	var date = new Date();
+	var tdate = date.getDate();
+	var month = date.getMonth() + 1;
+	var year = date.getUTCFullYear();
+	
+	if(tdate<10){
+		tdate = "0" + tdate;
+	}
+	if(month<10){
+		month = "0" + month;
+	}
+	
+	var minDate = year + "-" + month + "-" + tdate;
+	document.getElementById("disable_date").setAttribute('min', minDate);
+	
+	
+	
+	function disableAnother(){
+		var fromDate = document.getElementById("disable_date").value;
+		console.log("From Date = " + fromDate);
+		document.getElementById("next_date").setAttribute('min', fromDate);
+	}
+	</script>
 </body>
 </html>

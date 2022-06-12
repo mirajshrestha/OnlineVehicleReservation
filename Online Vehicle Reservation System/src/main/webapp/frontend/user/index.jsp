@@ -4,24 +4,48 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" href="user.css">
+
 <title>Insert title here</title>
+<%
+		if(session.getAttribute("userType")!="user"){
+			response.sendRedirect("login.jsp");
+			return;
+		}
+	%>
 </head>
 <body>
 
-	<%
-		if(session.getAttribute("email")==null){
-			response.sendRedirect("login.jsp");
-		}
-	%>
-	Welcome ${email}
-	<a href="../../index.jsp">Home</a>
-	<form action="<%= request.getContextPath() %>/logout">
-		<input type = "submit" value = "Logout">
 	
-	</form>
+	<nav class="nav-bar">
+        <nav class="main-style">
+            <div class="logo-style">
+                <a href="">
+                    <h2 class="title-style">
+                        <span>O</span>nline<span>V</span>ehicle<span>R</span>eservation
+                    </h2>
+                </a>
+            </div>
+            <div class="menu-style">
+                <ul class="tab-style">
+                    <li><a href="../../index.jsp">Home</a></li>
+                    <li><a href="../../index.jsp">Get a Quote</a></li>
+                    <li><a href="../user/login.jsp">Hi, ${user_name}</a></li>
+                    <li><form action="<%= request.getContextPath() %>/logout">
+		<input type = "submit" value = "Logout" style="cursor: pointer; padding: 16px 32px; border: none;">
+	
+	</form></li>
+                </ul>
+            </div>
+        </nav>
+    </nav>
+	<%-- Welcome ${email}--%>
+	
+	
 	<div id="content">
-
-	<h2>Booking History</h2>
+<br>
+	<h1 style="text-align: center;">Booking History</h1>
+	<br>
 
 	<table class="fancy-data-table full-width" cellspacing=0>
 	
@@ -37,7 +61,7 @@
 		</tr>
 		<%@page import="java.sql.*" %>
 		<% 
-         System.out.println(session.getAttribute("user_id"));
+         System.out.println("fronend/index.jsp-user_id = " + session.getAttribute("user_id"));
          //String id = session.getAttribute("owner_id").toString();
          String id = session.getAttribute("user_id").toString();
          Connection conn = null;

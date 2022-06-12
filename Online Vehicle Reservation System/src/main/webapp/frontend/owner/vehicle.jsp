@@ -4,6 +4,8 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" href="owner.css">
+
 <title>Insert title here</title>
 </head>
 <body>
@@ -13,26 +15,53 @@
 		}
 	
 	%>
+	<nav class="nav-bar">
+        <nav class="main-style">
+            <div class="logo-style">
+                <a href="../../index.jsp">
+                    <h2 class="title-style">
+                        <span>O</span>nline<span>V</span>ehicle<span>R</span>eservation
+                    </h2>
+                </a>
+            </div>
+            <div class="menu-style">
+                <ul class="tab-style">
+                    <li><a href="../../index.jsp">Home</a></li>
+                    <li><a href="">Get a Quote</a></li>
+                    <li><a href="../owner/login.jsp">Hi, ${owner_name}</a></li>
+                    <li><form action="<%= request.getContextPath() %>/ownerLogout">
+					<input type = "submit" value = "Logout" style="cursor: pointer; padding: 16px 32px; border: none;">
+					</form>
+					</li>
+                </ul>
+            </div>
+        </nav>
+    </nav>
 			<header>
-                <nav>
+                
                     <div>
                         <h1>Vehicle Management</h1>
                     </div>
-                </nav>
+                
             </header>
             <br>
-			<a href="index.jsp">Go back</a>
+            <div class="back">
+			
+        </div>
             <div class="row">
+                
 
                 <div class="container">
-                    <h3 class="text-center">List of Vehicles</h3>
+                    <h3 class="text-center">List of Vehicles</h3> 
                     <hr>
                     <div class="container text-left">
 
                         <a href="add-vehicle.jsp" class="btn btn-success">Add New Vehicle</a>
                     </div>
                     <br>
+                    <div class="detail">
                     <table class="" style="border: 1px solid black">
+
                         <thead>
                             <tr>
                                 <th width=3%>SN</th>
@@ -43,6 +72,7 @@
 								<th width=15%>Date From/To</th>
 								<th width=15%>Options</th>
                             </tr>
+                            
                         </thead>
                         
                         <tbody>
@@ -91,6 +121,7 @@
 						}
 						%>
                     </table>
+                    </div>
                 </div>
             </div>
 </body>

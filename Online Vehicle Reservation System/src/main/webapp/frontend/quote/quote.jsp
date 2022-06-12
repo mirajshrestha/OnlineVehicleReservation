@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+
 <%
 	session.setAttribute("booking_date_from", request.getParameter("date"));
 %>
@@ -7,10 +8,15 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" href="style_quote.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
 <title>Insert title here</title>
 </head>
 <body>
-<table class="" style="border: 1px solid black">
+<h2 style="padding: 50px; text-align: center;">Available Vehicles
+</h2>
+<%-- <table class="" style="border: 1px solid black">
                        	<thead>
                             <tr>
                                 <th width=3%>SN</th>
@@ -77,7 +83,56 @@
 							e.printStackTrace();
 						}
 						%>
-                    </table>
+                    </table>--%>
+ <%@page import="java.sql.*" %>
+ <% 
+                        int count = 1;
+                		ResultSet rs;
+                            Connection conn = null;
+                            try {
+                    			Class.forName("com.mysql.cj.jdbc.Driver");
+                    			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ovr","root","");
+                    			String combo1 = request.getParameter("combo1"); 
+                        		String combo2 = request.getParameter("combo2");
+                        		String date = request.getParameter("date");
+                    			PreparedStatement pst = conn.prepareStatement("Select * From vehicles where currentlocation = ? And availablelocation=? and fromdate <= ? And todate >= ?");
+                    			pst.setString(1, combo1);
+                    			pst.setString(2, combo2);
+                    			pst.setString(3, date);
+                    			pst.setString(4, date);
+                    			
+                    			rs = pst.executeQuery();
+                    			while(rs.next()){
+                        %>                 
+                        
+                    <div class="wrapper">
+                	
+                <div class="view_main">
+                    <div class="view_wrap list-view" style="display: block;">
+                        <div class="view_item">
+                            <div class="vi_left">
+                                <img src="<%= request.getContextPath() +"/images/"+ rs.getString("filename")%>" />
+                            </div>
+                            <div class="vi_right">
+                                <p class="Manufacturer"><%=rs.getString("Manufacturer") %></p>
+                                <p class="Model"><%=rs.getString("Model") %></p>
+                                <p class="DailyFare">Rs. <%=rs.getString("dailyfare") %></p>
+                                <p class="FromTo"><%=rs.getString("fromdate")%> to <%=rs.getString("todate") %></p>
+                                <a href="#">View Review</a>
+                                <a href="booking-details.jsp?vehicle_id=<%=rs.getString("vehicle_id") %>">Book this car</a>
+                            </div>
+                        </div>
+                       
+            
+                    </div>
+                </div>
+            </div>
 
+							
+                    	<%}}
+						catch(Exception e){
+							e.printStackTrace();
+						}
+						%>
 </body>
 </html>

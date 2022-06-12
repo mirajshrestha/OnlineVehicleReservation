@@ -5,7 +5,15 @@
 <%@page import="java.util.*"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Calendar" %>   
-<%
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" href="style.css">
+<title>Insert title here</title>
+</head>
+<body><%
 	if(session.getAttribute("userType")!="user"){
 		response.sendRedirect("../user/login.jsp");
 	}
@@ -171,7 +179,8 @@
 </div>
 
 <script>
-
+var fromDate = document.getElementById("d1").value;
+document.getElementById("d2").setAttribute('min', fromDate);
 
 
 function calculate_days(){
@@ -202,3 +211,5 @@ function calculate_days(){
 }
 
 </script>
+</body>
+</html>

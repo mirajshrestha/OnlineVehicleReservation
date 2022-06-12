@@ -1,6 +1,5 @@
-package com.user.registration;
+package com.ovr.admin;
 
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -16,41 +15,28 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * Servlet implementation class Login
+ * Servlet implementation class adminLogin
  */
-public class Login extends HttpServlet {
+public class adminLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		String uemail = req.getParameter("email");
-		String upwd = req.getParameter("pass");
-//		RequestDispatcher dispatcher = null;
-//		
-//		if(uemail == null || uemail.equals("")) {
-//			req.setAttribute("status", "invalidEmail");
-//			dispatcher = req.getRequestDispatcher("frontend/user/login.jsp");
-//			dispatcher.forward(req, res);
-//		}else {
-		
+		String username = req.getParameter("username");
+		String password = req.getParameter("password");
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ovr","root","");
-			PreparedStatement pst = conn.prepareStatement("Select * from users where email=? and pass=? ");
-			pst.setString(1, uemail);
-			pst.setString(2, upwd);
+			PreparedStatement pst = conn.prepareStatement("Select * from admin where username=? and password=? ");
+			pst.setString(1, username);
+			pst.setString(2, password);
 			
 			ResultSet rs = pst.executeQuery();
 			if(rs.next()) {
 				HttpSession session = req.getSession();
-				session.setAttribute("email", uemail);
-				System.out.println(rs.getInt(1));
-				session.setAttribute("user_id", rs.getInt(1));
-				session.setAttribute("user_name", rs.getString(2));
-				session.setAttribute("userType", "user");
-				res.sendRedirect("frontend/user/index.jsp");
+				res.sendRedirect("frontend/admin/index.jsp");
 			}else {
-				res.sendRedirect("frontend/user/login.jsp");
+				res.sendRedirect("frontend/admin/login.jsp");
 			}
 			
 		} catch (ClassNotFoundException e) {
@@ -60,9 +46,6 @@ public class Login extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-				
 	}
-	
 
 }

@@ -58,7 +58,7 @@ public class confirmBooking extends HttpServlet {
 			pst1.setString(7, own);
 			
 			pst1.executeUpdate();
-			
+			res.sendRedirect("frontend/user/index.jsp");
 			
 		} catch (Exception e) {
 			e.printStackTrace();

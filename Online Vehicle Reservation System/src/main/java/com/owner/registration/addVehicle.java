@@ -47,7 +47,7 @@ public class addVehicle extends HttpServlet {
 		Part part = req.getPart("image");//
         String fileName = extractFileName(part);//file name
         
-        String savePath ="C:/Users/MODERN/eclipse-workspace/servlets/Onlive Vehicle Reservation System/src/main/webapp/images/" + File.separator + fileName;
+        String savePath ="C:\\Users\\MODERN\\git\\OnlineVehicleReservation\\Online Vehicle Reservation System\\src\\main\\webapp\\images" + File.separator + fileName;
         File fileSaveDir = new File(savePath);
         part.write(savePath + File.separator);
                 

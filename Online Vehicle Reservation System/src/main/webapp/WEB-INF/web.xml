@@ -104,4 +104,24 @@
     <servlet-name>confirmBooking</servlet-name>
     <url-pattern>/confirmBooking</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>updateOwner</display-name>
+    <servlet-name>updateOwner</servlet-name>
+    <servlet-class>com.owner.registration.updateOwner</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>updateOwner</servlet-name>
+    <url-pattern>/updateOwner</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>adminLogin</display-name>
+    <servlet-name>adminLogin</servlet-name>
+    <servlet-class>com.ovr.admin.adminLogin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>adminLogin</servlet-name>
+    <url-pattern>/adminLogin</url-pattern>
+  </servlet-mapping>
 </web-app>

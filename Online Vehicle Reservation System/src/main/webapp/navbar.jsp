@@ -20,8 +20,29 @@
 			<ul class="tab-style">
 				<li><a href="">Home</a></li>
 				<li><a href="">Get a Quote</a></li>
-				<li><a href="frontend/user/login.jsp">User Login</a></li>
-				<li><a href="frontend/owner/login.jsp">Owner Login</a></li>
+				<li>
+				<%if(session.getAttribute("userType")=="user"){ %>
+				<a href="frontend/user/login.jsp">Hi, ${user_name}</a>
+				<%}else if(session.getAttribute("userType")=="owner"){ %>
+				<a href="frontend/owner/login.jsp">Hi, ${owner_name}</a>
+				<%}else{ %>
+				<a href="frontend/user/login.jsp">User Login</a>
+				<%} %>
+				</li>
+				<li>
+				<%if(session.getAttribute("userType")=="user"){ %>
+				<form action="<%= request.getContextPath() %>/logout">
+					<input type = "submit" value = "Logout" style="cursor: pointer; padding: 16px 32px; border: none;">
+				</form>
+				<%}else if(session.getAttribute("userType")=="owner"){ %>
+				<form action="<%= request.getContextPath() %>/ownerLogout">
+		<input type = "submit" value = "Logout" style="cursor: pointer; padding: 16px 32px; border: none;">
+	
+	</form>
+				<%}else{ %>
+				<a href="frontend/owner/login.jsp">Owner Login</a>
+				<%} %>
+				</li>
 			</ul>
 		</div>
 	</nav>

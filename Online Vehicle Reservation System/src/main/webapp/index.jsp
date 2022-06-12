@@ -17,7 +17,7 @@
         <h1>Rent a Vehicle</h1><br>
         <div class="form"> 
         <form action="frontend/quote/quote.jsp" method="get">
-            <select name ="combo1" style="width:200px; height:25px;" required>
+            <select name ="combo1" style="width:200px; height:25px;">
 			<option value="">Journey From(District)</option>
 			<option value="Kathmandu">Kathmandu</option>
 			<option value="Bhaktapur">Bhaktapur</option>
@@ -26,7 +26,7 @@
 			<option value="Dhading">Dhading</option>
 			<option value="Accham">Accham</option>
 		</select>
-		<select name ="combo2" style="width:200px; height:25px;" required>
+		<select name ="combo2" style="width:200px; height:25px;">
 			<option value="">Journey To(District)</option>
 			<option value="Kathmandu">Kathmandu</option>
 			<option value="Bhaktapur">Bhaktapur</option>
@@ -35,7 +35,7 @@
 			<option value="Dhading">Dhading</option>
 			<option value="Accham">Accham</option>
 		</select>
-		<input type="date" name="date" style="width:200px; height:25px;" required>
+		<input type="date" name="date" style="width:200px; height:25px;" id="fD">
 		<br>
         <input type="submit" value="Search" class="search">
         	</form>
@@ -95,7 +95,7 @@
                         </div>
 
                         <div class="swiper-slide box">
-                            <img src="../image/b.png" alt="non">
+                            <img src="../image/b.png" alt="">
                             <div class="content">
                                 <h3>Vehicle Name</h3>
                                 <p>Owner Name</p>
@@ -147,6 +147,20 @@
         </div>
         <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <script>
+    var date = new Date();
+	var tdate = date.getDate();
+	var month = date.getMonth() + 1;
+	var year = date.getUTCFullYear();
+	
+	if(tdate<10){
+		tdate = "0" + tdate;
+	}
+	if(month<10){
+		month = "0" + month;
+	}
+	
+	var minDate = year + "-" + month + "-" + tdate;
+	document.getElementById("fD").setAttribute('min', minDate);
     var swiper = new Swiper(".vehicle-slider", {
     	  slidesPerView: 1,
     	  spaceBetween: 20,
@@ -162,7 +176,7 @@
     	  },
     	  breakpoints: {
     	    0: {
-    	      slidesPerView: 1,
+    	      slidesPerView: 1,	
     	      
     	    },
     	    768: {
@@ -173,6 +187,8 @@
     	    },
     	  },
     	});
+    
+  
     </script>
 </body>
 </html>

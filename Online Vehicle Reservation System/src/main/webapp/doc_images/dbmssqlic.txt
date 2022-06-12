@@ -1,0 +1,72 @@
+Library Management System
+CREATE DATABASE library_management_system;
+USE library_management_system;
+CREATE TABLE Borrower(
+    BorrowerID int PRIMARY KEY AUTO_INCREMENT,
+    Name varchar(50) NOT NULL,
+    ClassLevel varchar(10) NOT NULL,
+    Gender varchar(10) NOT NULL,
+    Semester varchar(10),
+    Section varchar(10)
+);
+CREATE TABLE Books(
+    BookID int PRIMARY KEY AUTO_INCREMENT,
+    Title varchar(50) NOT NULL,
+    AuthorName varchar(50) NOT NULL,
+    Edition varchar(50) NOT NULL,
+    Year int(50) NOT NULL
+    );
+CREATE TABLE Borrowed (
+    BorrowedID int PRIMARY KEY AUTO_INCREMENT,
+    BorrowerID int(50) NOT NULL,
+    BookID int(50) NOT NULL,
+    DateReleased date,
+    DateToBeReturned date,
+    Status varchar(50) NOT NULL,
+    FineCharge int(50) NOT NULL
+    );
+Write a query to determine total fine for each borrower
+SELECT borrower.Name, sum(borrowed.FineCharge) FROM borrower JOIN borrowed ON borrower.BorrowerID = borrowed.BorrowerID GROUP BY borrower.Name;
+ 
+
+1.	Write a query to list the book title that is borrowed by borrower.
+SELECT Title FROM books JOIN borrowed WHERE books.BookID = borrowed.BookID;
+ 
+1.	Write a query to determine the no. of books borrowed by each borrower.
+SELECT borrower.Name, COUNT(borrowed.BookID) FROM borrower JOIN borrowed ON borrower.BorrowerID = borrowed.BorrowerID GROUP BY borrower.Name;
+ 
+1.	Write a query to list the books title, title starting with “a” and with “b” in the third place and any character after that.
+SELECT Title FROM books WHERE Title LIKE 'a_b%';
+ 
+
+Write a query to list the title of the book that is not yet borrowed
+SELECT books.Title, borrowed.Status, books.BookID FROM books LEFT JOIN borrowed ON books.BookID = borrowed.BookID WHERE borrowed.Status = "Returned" OR borrowed.Status IS null;
+
+
+
+ 
+Hospital Management System
+1.	Write a query to list the patient name with their assigned doctor name.
+
+SELECT doctor.Name, patient.Name FROM doctor JOIN patient ON doctor.DoctorID = patient.DoctorID;
+1.	Write a query to list the medicine name consumed by a patient hari.
+SELECT medicine.Name FROM medicine JOIN treatment ON medicine.MedicineID = treatment.MedicineID JOIN patient ON patient.PatientID = treatment.PatientID WHERE patient.Name = "hari";
+
+
+1.	Write a query to list the expired medicine name.
+SELECT medicine.Name FROM medicine WHERE expdate < now();
+1.	Write a query to list the doctor name starting with “s” and with “b” in the third place and any character after that.
+
+SELECT doctor.Name FROM doctor WHERE doctor.Name LIKE "s_b%";
+1.	Write a query to list doctors those are not yet assigned to a patient.
+SELECT doctor.Name FROM doctor LEFT JOIN patient ON doctor.DoctorID = patient.DoctorID WHERE patient.DoctorID IS null;
+
+ 
+Sales Management System
+1.	Write a query to list the customer name with the assigned salespeople.
+SELECT customer.Name, salespeople.Name FROM customer JOIN salespeople ON salespeople.salespeopleID = customer.salespeopleID;
+
+1.	Write a query to list the total number of items in each order.
+
+
+

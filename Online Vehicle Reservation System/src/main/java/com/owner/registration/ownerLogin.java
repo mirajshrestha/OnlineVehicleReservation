@@ -37,7 +37,7 @@ public class ownerLogin extends HttpServlet {
 				HttpSession session = req.getSession();
 				session.setAttribute("owner_id", rs.getInt(1));
 				session.setAttribute("owner_name", rs.getString(2));
-				session.setAttribute("owner_phone", rs.getInt(5));
+				session.setAttribute("owner_phone", rs.getString(5));
 				session.setAttribute("email", uemail);
 				session.setAttribute("userType", "owner");
 				res.sendRedirect("frontend/owner/index.jsp");

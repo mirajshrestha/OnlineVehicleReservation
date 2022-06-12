@@ -1,0 +1,236 @@
+@charset "ISO-8859-1";
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Poppins", sans-serif;
+}
+html{
+	font-size: 62.5%;
+}
+a{
+	text-decoration: none;
+}
+li{
+	list-style: none;
+}
+.main-style{
+	width: 100%;
+	height: 10rem;
+	display: grid;
+	grid-template-columns: 10rem 1fr 2fr 1fr 10rem;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px;
+}
+.logo-style{
+	display: grid;
+	grid-column: 2/3;
+	justify-content: start;
+	align-items: center;
+}
+.menu-style{
+	grid-column: 3/5;
+}
+.tab-style{
+	height: 10rem;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+.title-style{
+	font-size: 2.5rem;
+	font-weight: 400;
+	text-transform: uppercase;
+}
+span{
+	font-size: 3.5rem;
+}
+li{
+	font-size: 1.8rem;
+}
+li a{
+	text-transform: capitalize;
+	color: rgba(0, 0, 3, 0.8);
+	transition: 0.5s;
+}
+
+h1{
+text-align: center;
+font-size: 40px;
+margin: 10px;
+}
+
+body{
+	
+}
+
+.card{
+	background: cyan;
+	align-items: center;
+	margin-left: 32%;
+	width: 450px;
+	
+	box-sizing: border-box;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	padding: 35px;
+	border-radius: 5px;
+}
+
+.card .form{
+	
+}
+
+.form-table {
+	font-size: 16px;
+
+	
+}
+
+.form-table input{
+width: calc(60%);
+margin: 5px;
+}
+
+.form-table select{
+	width: calc(60%);
+margin: 5px;
+}
+
+.form-table textarea{
+	width: calc(60%);
+margin: 5px;
+}
+
+.card button{
+	display: inline-block;
+    margin-top: 10px;
+    border-radius: 5rem;
+    background: yellow;
+    color: black;
+    font-weight: 500;
+    font-size: 1.7rem;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 0px;
+    width:80px;
+}
+
+/* booking */
+.main-content-bodi{
+	background: cyan;
+	align-items: center;
+	padding: 35px;
+	border-radius: 5px;
+	width: 95%;
+	margin-left: 40px;
+	margin-top: 30px;
+}
+
+/* owner-index */
+.owner-index{
+	background: cyan;
+	align-items: center;
+	padding: 35px;
+	border-radius: 5px;
+	width: 886px;
+	margin-left: 40px;
+	margin-top: 30px;
+	align-content: center;
+	display: flex;
+	font-size: 20px;
+	margin-left: 15%;
+}
+.owner-index input{
+	display: inline-block;
+    margin-top: 10px;
+    border-radius: 5rem;
+    background: yellow;
+    color: black;
+    font-weight: 500;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 0px;
+    width:80px;	
+}
+
+.owner-index a{
+	padding: 20px;
+	padding-left: 50px;
+	padding-right: 200px;
+}
+
+/* profile */
+.main-content-body{
+	background: cyan;
+	align-items: center;
+	padding: 35px;
+	border-radius: 5px;
+	width: 95%;
+	margin-left: 40px;
+	margin-top: 30px;
+}
+
+.main-content-body table button{
+	display: inline-block;
+    margin-top: 10px;
+    border-radius: 5rem;
+    background: yellow;
+    color: black;
+    font-weight: 500;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 0px;
+    width:140px;	
+}
+
+.main-content-body table{
+	margin-left: 35%;
+}
+
+
+.main-content-body tr{
+	margin: 20px;
+}
+
+.main-content-body input{
+	margin-bottom: 20px;
+}
+
+/* vehicle */
+.detail{
+	background: cyan;
+	width: 98%;
+	margin-left: 15px;
+	border-radius: 5px;
+}
+.detail a{
+	display: inline-flex;
+    margin-top: 0px;
+    border-radius: 5rem;
+    background: yellow;
+    color: black;
+    font-weight: 500;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 15px;
+    width:50px;
+	height: 20px;
+	justify-content: center;
+	font-display: center;
+}
+
+.back a{
+margin-left: 10px;
+
+font-size: 16px;
+}
+
+.row .container {
+	font-size: 16px;
+	margin-top: 20px;
+	text-align: center;
+}

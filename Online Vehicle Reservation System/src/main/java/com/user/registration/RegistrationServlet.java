@@ -17,9 +17,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
-maxFileSize = 1024 * 1024 * 10, // 10MB
-maxRequestSize = 1024 * 1024 * 50)
+@MultipartConfig
 
 public class RegistrationServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
@@ -35,22 +33,25 @@ public class RegistrationServlet extends HttpServlet{
 		Part part = req.getPart("driving_license");//
         String fileName = extractFileName(part);//file name
         
-        String savePath ="C:/Users/MODERN/eclipse-workspace/servlets/Onlive Vehicle Reservation System/src/main/webapp/doc_images/" + File.separator + fileName;
+        System.out.println(getServletContext().getRealPath(""));
+        String savePath ="C:\\Users\\MODERN\\git\\OnlineVehicleReservation\\Online Vehicle Reservation System\\src\\main\\webapp\\doc_images\\" + fileName;
+//        String savePath = getServletContext().getRealPath("doc_images/"+fileName);
+
         File fileSaveDir = new File(savePath);
-        part.write(savePath + File.separator);
+        part.write(savePath);
         
 		Connection conn = null;
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ovr","root","");
-			PreparedStatement pst = conn.prepareStatement("insert into users(name, email, pass, contact, address, license_name, userimages_path) values (?,?,?,?,?,?,?)");
+			PreparedStatement pst = conn.prepareStatement("insert into users(name, email, pass, contact, address, license_name) values (?,?,?,?,?,?)");
 			pst.setString(1, uname);
 			pst.setString(2, uemail);
 			pst.setString(3, upwd);
 			pst.setString(4, umobile);
 			pst.setString(5, location);
 			pst.setString(6, fileName);
-			pst.setString(7, savePath);
+			
 			
 			
 			int rowCount = pst.executeUpdate();
