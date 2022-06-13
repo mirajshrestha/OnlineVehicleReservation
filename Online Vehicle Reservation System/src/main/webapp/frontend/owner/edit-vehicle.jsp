@@ -90,21 +90,6 @@ try {
 						</td>
 					</tr>
 							
-					<tr>
-						<th><label>Vehicle Available For: </label></th>
-						<td>
-						<select name="end_location" style="">
-							<option value="">---Select Location--</option>
-							<option value="1">Kathmandu</option>
-								<option value="2">Bhaktapur</option>
-								<option value="3">Lalitpur</option>
-								<option value="4">Makawanpur</option>
-								<option value="5">Dhading</option>
-								<option value="6">Accham</option>					
-							</select>
-						</td>
-					</tr>
-								
 								<tr>
 									<th><label>Description: </label></th>
 									<td>

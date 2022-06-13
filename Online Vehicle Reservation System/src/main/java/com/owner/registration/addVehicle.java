@@ -55,19 +55,18 @@ public class addVehicle extends HttpServlet {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ovr","root","");
-			PreparedStatement pst = conn.prepareStatement("insert into vehicles(Manufacturer, Model, dailyfare, fromdate, todate, currentlocation, availablelocation, desciption, filename, path, owner_id) values (?,?,?,?,?,?,?,?,?,?,?)");
+			PreparedStatement pst = conn.prepareStatement("insert into vehicles(Manufacturer, Model, dailyfare, fromdate, todate, currentlocation, desciption, filename, path, owner_id) values (?,?,?,?,?,?,?,?,?,?)");
 			pst.setString(1, mfg);
 			pst.setString(2, mdl);
 			pst.setString(3, rate);
 			pst.setString(4, from);
 			pst.setString(5, to);
 			pst.setString(6, start);
-			pst.setString(7, end);
-			pst.setString(8, describe);
-			pst.setString(9, fileName);
-            pst.setString(10, savePath);
+			pst.setString(7, describe);
+			pst.setString(8, fileName);
+            pst.setString(9, savePath);
             System.out.println(owner_id);
-            pst.setString(11, owner_id);
+            pst.setString(10, owner_id);
 			
 			
 			pst.executeUpdate();

@@ -95,13 +95,12 @@
                     			String combo1 = request.getParameter("combo1"); 
                         		String combo2 = request.getParameter("combo2");
                         		String date = request.getParameter("date");
-                    			PreparedStatement pst = conn.prepareStatement("Select vehicles.*, (select count(*) from bookings where vehicle_id = vehicles.vehicle_id and for_date <= ? And to_date >= ?) as booking_count from vehicles where currentlocation = ? And availablelocation=? and fromdate <= ? And todate >= ? ");
+                    			PreparedStatement pst = conn.prepareStatement("Select vehicles.*, (select count(*) from bookings where vehicle_id = vehicles.vehicle_id and for_date <= ? And to_date >= ?) as booking_count from vehicles where currentlocation = ? and fromdate <= ? And todate >= ? ");
                     			pst.setString(1, date);
                     			pst.setString(2, date);
                     			pst.setString(3, combo1);
-                    			pst.setString(4, combo2);
+                    			pst.setString(4, date);
                     			pst.setString(5, date);
-                    			pst.setString(6, date);
                     			
                     			rs = pst.executeQuery();
                     			while(rs.next() && request.getAttribute("status")!= "booked"){

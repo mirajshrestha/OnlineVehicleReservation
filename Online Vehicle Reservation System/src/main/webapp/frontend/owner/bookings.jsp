@@ -53,7 +53,7 @@
 			<th>Car Model</th>
 			<th>Booked For Date</th>
 			<th>Booked Days</th>
-			<th>Amount Paid</th>
+			<th>Amount</th>
 			<th>Options</th>
 		</tr>
 		<%@page import="java.sql.*" %>

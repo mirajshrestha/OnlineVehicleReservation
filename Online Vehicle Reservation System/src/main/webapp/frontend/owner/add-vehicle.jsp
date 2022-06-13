@@ -92,22 +92,6 @@
 									</td>
 								</tr>
 								
-								<tr>
-									<th><label>Vehicle Available For: </label></th>
-									<td>
-										<select name="end_location" style="" id="end_location">
-										<option value="">---Select Location--</option>
-											<option value="Kathmandu">Kathmandu</option>
-											<option value="Bhaktapur">Bhaktapur</option>
-											<option value="Lalitpur">Lalitpur</option>
-											<option value="Makawanpur">Makawanpur</option>
-											<option value="Dhading">Dhading</option>
-											<option value="Accham">Accham</option>					
-										</select>
-										<br>
-									<span id="empty_nlocation" style="color: red; font-size:10px;"></span>
-									</td>
-								</tr>
 								
 								<tr>
 									<th><label>Description: </label></th>

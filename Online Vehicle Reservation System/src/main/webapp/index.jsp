@@ -18,16 +18,7 @@
         <div class="form"> 
         <form action="frontend/quote/quote.jsp" method="get">
             <select name ="combo1" style="width:200px; height:25px;">
-			<option value="">Journey From(District)</option>
-			<option value="Kathmandu">Kathmandu</option>
-			<option value="Bhaktapur">Bhaktapur</option>
-			<option value="Lalitpur">Lalitpur</option>
-			<option value="Makawanpur">Makawanpur</option>
-			<option value="Dhading">Dhading</option>
-			<option value="Accham">Accham</option>
-		</select>
-		<select name ="combo2" style="width:200px; height:25px;">
-			<option value="">Journey To(District)</option>
+			<option value="">--- Choose District ---</option>
 			<option value="Kathmandu">Kathmandu</option>
 			<option value="Bhaktapur">Bhaktapur</option>
 			<option value="Lalitpur">Lalitpur</option>

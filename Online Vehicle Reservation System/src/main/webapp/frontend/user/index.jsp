@@ -53,10 +53,10 @@
 			<th width=5%>SN</th>
 			<th width=10%>Car Image</th>
 			<th>Car Model</th>
-			<th>Journey From/To</th>
+			<th>Booked Location</th>
 			<th>Booked For Date</th>
 			<th>Booked Days</th>
-			<th>Amount Paid</th>
+			<th>Amount</th>
 			<th>Options</th>
 		</tr>
 		<%@page import="java.sql.*" %>
@@ -77,12 +77,12 @@
 				<td><%=count++%></td>
 				<td><img src="<%= request.getContextPath() +"/images/"+ rs.getString("vehicles.filename")%>" width=100></td>
 				<td><%=rs.getString("vehicles.Model")%></td>
-				<td><%=rs.getString("vehicles.currentlocation")%> / <%=rs.getString("vehicles.availablelocation")%></td>
+				<td><%=rs.getString("vehicles.currentlocation")%></td>
 				<td><%=rs.getString("for_date")%></td>
 				<td><%=rs.getString("booked_days")%> day(s)</td>
 				<td>Rs.<%=rs.getString("total_fare")%></td>
-				<td><a href="" class="btn"><i class="fa fa-edit"></i> Write a review</a>
-				<a href="cancel-booking.jsp?booking_id=<%= rs.getInt("booking_id") %>" class="btn"><i class="fa fa-edit"></i> Cancel Booking</a>
+				<td><a href="" class="btn">Write a review</a>
+				<a href="cancel-booking.jsp?booking_id=<%= rs.getInt("booking_id") %>" class="btn">Cancel Booking</a>
 				</td>
 			</tr>
 	<%}}

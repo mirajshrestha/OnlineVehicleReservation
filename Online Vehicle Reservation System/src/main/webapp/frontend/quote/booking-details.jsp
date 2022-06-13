@@ -88,12 +88,8 @@
 	<table class="form-table">
 		<tr>
 			<td>
-				<label>Journey From:</label>
+				<label>Vehicle Location:</label>
 				<input type="text" value="<%=rs.getString("currentlocation") %>" disabled>
-			</td>
-			<td>
-				<label>Journey To:</label>
-				<input type="text" value="<%=rs.getString("availablelocation") %>" disabled>
 			</td>
 		</tr>
 		<tr>
