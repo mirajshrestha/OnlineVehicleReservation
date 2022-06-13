@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="../../assests/css/style.css">
 </head>
 <body>
+
 	<div class="main">
 
 		<section class="signup">
@@ -24,12 +25,23 @@
 								<label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label> 
 								<input type="text" name="name" id="name" placeholder="Full name">
 							</div>
+							<%
+								if(request.getParameter("email")!=null){
+									if(request.getParameter("email").equals("exists")){
+										out.println("*Email Already Exists*");
+									}
+								}
+							%>
 							<span id="empty_email" style="color: red;"></span>
+							
 							<div class="form-group">
 								<label for="email"><i class="zmdi zmdi-email"></i></label> 
 								<input type="email" name="email" id="email" placeholder="Email" >
 							</div>
+							
+									
 							<span id="empty_password" style="color: red;"></span>
+								
 							<div class="form-group">
 								<label for="pass"><i class="zmdi zmdi-lock"></i></label> 
 								<input type="password" name="pass" id="pass" placeholder="Password" >
@@ -105,6 +117,17 @@
 			document.getElementById("empty_email").innerHTML = "*Please enter your email address*";
 			return false;
 		}
+		if(email.indexOf('@')<=0){
+			//alert("Please enter email address");
+			document.getElementById("empty_email").innerHTML = "*Invalid @ position*";
+			return false;
+		}
+		if((email.charAt(email.length-4)!='.') && (email.charAt(email.length-3)!='.')){
+			//alert("Please enter email address");
+			document.getElementById("empty_email").innerHTML = "*Invalid email sturcture*";
+			return false;
+		}
+		
 		
 		if(pwd == ""){
 			//alert("Please enter email address");

@@ -81,7 +81,9 @@
 				<td><%=rs.getString("for_date")%></td>
 				<td><%=rs.getString("booked_days")%> day(s)</td>
 				<td>Rs.<%=rs.getString("total_fare")%></td>
-				<td><a href="" class="btn"><i class="fa fa-edit"></i> Write a review</a></td>
+				<td><a href="" class="btn"><i class="fa fa-edit"></i> Write a review</a>
+				<a href="cancel-booking.jsp?booking_id=<%= rs.getInt("booking_id") %>" class="btn"><i class="fa fa-edit"></i> Cancel Booking</a>
+				</td>
 			</tr>
 	<%}}
 		catch(Exception e){
@@ -93,5 +95,16 @@
 	</table>
 
 </div>
+<script type="text/javascript">
+<%
+if(request.getParameter("booking")!=null){
+	if(request.getParameter("booking").equals("success")){
+%>
+		alert("Booking cancelled successfully!");
+<%
+	}
+}
+%>
+</script>
 </body>
 </html>

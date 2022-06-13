@@ -24,6 +24,13 @@
 								<label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label> 
 								<input type="text" name="name" id="name" placeholder="Full name" >	
 							</div>
+							<%
+								if(request.getParameter("email")!=null){
+									if(request.getParameter("email").equals("exists")){
+										out.println("*Email Already Exists*");
+									}
+								}
+							%>
 							<span id="empty_email" style="color: red;"></span>
 							<div class="form-group">
 								<label for="email"><i class="zmdi zmdi-email"></i></label> 
@@ -93,6 +100,16 @@
 		if(email == ""){
 			//alert("Please enter email address");
 			document.getElementById("empty_email").innerHTML = "*Please enter your email address*";
+			return false;
+		}
+		if(email.indexOf('@')<=0){
+			//alert("Please enter email address");
+			document.getElementById("empty_email").innerHTML = "*Invalid @ position*";
+			return false;
+		}
+		if((email.charAt(email.length-4)!='.') && (email.charAt(email.length-3)!='.')){
+			//alert("Please enter email address");
+			document.getElementById("empty_email").innerHTML = "*Invalid email sturcture*";
 			return false;
 		}
 		

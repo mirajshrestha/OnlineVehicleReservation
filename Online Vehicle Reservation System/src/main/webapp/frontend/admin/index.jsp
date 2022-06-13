@@ -1,94 +1,68 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%-- <%@ include file="../../navbar.jsp" %> --%>
-<!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<link rel="stylesheet" href="admin.css">
-<title>Insert title here</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Admin Dashboard | OVR</title>
+
+<link href="admin.css" rel="stylesheet" type="text/css" />
+
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="../../assests/fonts/material-icon/css/material-design-iconic-font.min.css" />
+
+
+<script src="<%= request.getContextPath() %>/assets-admin/js/jquery.min.js" type="text/javascript"></script>
+<script src="<%= request.getContextPath() %>/assets-admin/js/jquery.validate.js" type="text/javascript"></script>
+<script src="<%= request.getContextPath() %>/assets-admin/js/tooltip.js" type="text/javascript"></script>
+<script src="<%= request.getContextPath() %>/assets-admin/js/checks.js" type="text/javascript"></script>
 
 </head>
 <body>
-<header class="header">
-        <div class="nav">
-            <a href="#" class="ovr"><span>OnlineVehicle</span>Reservation</a>
-        <nav class="navbar">
-            <a href="#">Home</a>
-            <a href="#">Vehicles</a>
-            <a href="#">Services</a>
-            <a href="#">Featured</a>
-            <a href="#">Search</a>
-            <a href="#">About Us</a>
-        </nav>
-        
-         <div id="logout">
-            <button class="btn">logout</button>
-            <i class="far fa-user"></i>
-         </div>
-         </div>
+<div id="main_wrapper">
+  <div class="wrapper">
+  	<div id="header">
+	<div class="logo">
+		<a href="./">
+			<h1>Online Vehicle Reservation</h1>
+		</a>
+	</div>
+	<div class="header-right">
+		<span class="txt1">Hello Admin,</span> Welcome to your Dashboard <br />
+		<a href="<%=request.getContextPath()%>/admin/logout">Logout</a> | <a
+			href="<%= request.getContextPath() %>/admin/change-password">Change Password</a>
+	</div>
+	<div class="clear"></div>
+</div>
+<ul id="nav">
+  <li><a href="" class=""><i class="zmdi zmdi-view-dashboard"></i> Dashboard</a></li>
+  <!-- <li><a href="#" class="menulink"><i class="fa fa-book"></i> CMS</a></li>  --> 
+</ul>
+<div class="clear"></div>
 
-         <div class="AdminHeader">
-             <h1>Admin Dashboard</h1>
-            </div>
+<div id="nav-wrapper">
+  <ul id="subnav">
+    <li><a href="" target="_blank">Preview Site</a></li>
+    <li><a href="<%= request.getContextPath() %>/admin/owners">Owners List</a></li>
+    <li><a href="<%= request.getContextPath() %>/admin/owners/feature-vehicles">Feature Vehicle Requests</a></li>
+    <li><a href="">Change Password</a></li>
+    <li><a href="">Log Out</a></li>
+  </ul>
+  <div class="clear"></div>
+</div>
 
-            <div class="admin">
-
-            <div class="admin-content">
-                <h1>Name</h1>
-                <p>admin name</p>
-
-                <h1>Email</h1>
-                <p>admin@gmail.com</p>
-            </div>
-
-                <div id="password">
-                    <button class="change">Change Password</button>
-                </div>
-            </div>
-
-            <div class="request-feature">
-               <h1> Feature Request </h1>
-            </div>
-
-            <div class="request">
-                <div class="feature">
-                    <ul class="details">
-                        <li class="topic">Owner Name</li>
-                        <li><a href="#">a</a></li>
-                        <li><a href="#">b</a></li>
-                        
-                    </ul>
-
-                    <ul class="details">
-                        <li class="topic">Vehicle</li>
-                        <li><a href="#">Skoda</a></li>
-                        <li><a href="#">Bmw</a></li>
-                    </ul>
-
-                    <ul class="details">
-                        <li class="topic">Request Date</li>
-                        <li><a href="#">10-05-2022</a></li>
-                        <li><a href="#">10-06-2022</a></li>
-                    </ul>
-
-                    <ul class="details">
-                        <li class="topic">Accept</li>
-                        <li><button>Accept</button></li>
-                        <li><button>Accept</button></li>
-                    </ul>
-
-                    <ul class="details">
-                        <li class="topic">Decline</li>
-                        <li><button>Decline</button></li>
-                        <li><button>Decline</button></li>
-                    </ul>
-
-
-                
-               
-            </div>
-
-            </header>
+  </div>
+  <div class="wrapper">
+    <div id="maincontent">
+      <div class="contentainer">
+        <div class="page-header">Welcome To Admin Dashboard</div>
+        <div class="content-box">You have Sucessfully Logged in.<br />
+          Please use the Navigation to manage your website.</div>
+      </div>
+      <div class="contentainer">
+        <div class="page-header1">Security Alert</div>
+        <div class="content-box">Please do not forget to logout after managing your website.</div>
+      </div>
+    </div>
+  </div>
+  <div class="push"></div>
+</div>
 </body>
-</html>

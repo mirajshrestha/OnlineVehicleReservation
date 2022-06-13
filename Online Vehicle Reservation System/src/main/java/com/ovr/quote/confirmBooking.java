@@ -39,6 +39,7 @@ public class confirmBooking extends HttpServlet {
 		String amount = req.getParameter("total_fare");
 		String msg = req.getParameter("additional_message");
 		String own = req.getParameter("owner"); 
+		String todate = req.getParameter("to_date");
         Connection conn = null;
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -48,7 +49,7 @@ public class confirmBooking extends HttpServlet {
 
 			pst.executeUpdate();
 			
-			PreparedStatement pst1 = conn.prepareStatement("Insert into bookings (vehicle_id, id, for_date, booked_days, total_fare, message, owner_id) Values (?,?,?,?,?,?,?)");
+			PreparedStatement pst1 = conn.prepareStatement("Insert into bookings (vehicle_id, id, for_date, booked_days, total_fare, message, owner_id, to_date) Values (?,?,?,?,?,?,?,?)");
 			pst1.setString(1, vehicle);
 			pst1.setString(2, userID);
 			pst1.setString(3, fordate);
@@ -56,8 +57,10 @@ public class confirmBooking extends HttpServlet {
 			pst1.setString(5, amount);
 			pst1.setString(6, msg);
 			pst1.setString(7, own);
+			pst1.setString(8, todate);
 			
 			pst1.executeUpdate();
+			req.setAttribute("status", "booked");
 			res.sendRedirect("frontend/user/index.jsp");
 			
 		} catch (Exception e) {

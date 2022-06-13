@@ -15,6 +15,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @MultipartConfig
@@ -44,6 +45,15 @@ public class RegistrationServlet extends HttpServlet{
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ovr","root","");
+			
+			PreparedStatement pst1 = conn.prepareStatement("select * from users where email=?");
+			pst1.setString(1, uemail);
+			ResultSet rs = pst1.executeQuery();
+			if(rs.next()) {
+				res.sendRedirect("frontend/user/registration.jsp?email=exists");
+			}
+			else {
+			
 			PreparedStatement pst = conn.prepareStatement("insert into users(name, email, pass, contact, address, license_name) values (?,?,?,?,?,?)");
 			pst.setString(1, uname);
 			pst.setString(2, uemail);
@@ -64,6 +74,7 @@ public class RegistrationServlet extends HttpServlet{
 				req.setAttribute("status", "failed");
 			}
 //			dispatcher.forward(req, res);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {

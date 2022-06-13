@@ -95,14 +95,19 @@
                     			String combo1 = request.getParameter("combo1"); 
                         		String combo2 = request.getParameter("combo2");
                         		String date = request.getParameter("date");
-                    			PreparedStatement pst = conn.prepareStatement("Select * From vehicles where currentlocation = ? And availablelocation=? and fromdate <= ? And todate >= ?");
-                    			pst.setString(1, combo1);
-                    			pst.setString(2, combo2);
-                    			pst.setString(3, date);
-                    			pst.setString(4, date);
+                    			PreparedStatement pst = conn.prepareStatement("Select vehicles.*, (select count(*) from bookings where vehicle_id = vehicles.vehicle_id and for_date <= ? And to_date >= ?) as booking_count from vehicles where currentlocation = ? And availablelocation=? and fromdate <= ? And todate >= ? ");
+                    			pst.setString(1, date);
+                    			pst.setString(2, date);
+                    			pst.setString(3, combo1);
+                    			pst.setString(4, combo2);
+                    			pst.setString(5, date);
+                    			pst.setString(6, date);
                     			
                     			rs = pst.executeQuery();
-                    			while(rs.next()){
+                    			while(rs.next() && request.getAttribute("status")!= "booked"){
+                    				if(rs.getInt("booking_count")>0){
+                    					continue;
+                    				}
                         %>                 
                         
                     <div class="wrapper">
@@ -122,6 +127,8 @@
                                 <a href="booking-details.jsp?vehicle_id=<%=rs.getString("vehicle_id") %>">Book this car</a>
                             </div>
                         </div>
+                        <%-- <%= rs.getString("booking_count") %> --%>
+                        
                        
             
                     </div>
@@ -129,7 +136,8 @@
             </div>
 
 							
-                    	<%}}
+                    	<%
+                    	}}
 						catch(Exception e){
 							e.printStackTrace();
 						}

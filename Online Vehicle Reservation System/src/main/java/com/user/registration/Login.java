@@ -50,7 +50,7 @@ public class Login extends HttpServlet {
 				session.setAttribute("userType", "user");
 				res.sendRedirect("frontend/user/index.jsp");
 			}else {
-				res.sendRedirect("frontend/user/login.jsp");
+				res.sendRedirect("frontend/user/login.jsp?email=invalid");
 			}
 			
 		} catch (ClassNotFoundException e) {

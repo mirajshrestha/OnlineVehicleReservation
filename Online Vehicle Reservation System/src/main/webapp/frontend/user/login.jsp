@@ -35,6 +35,13 @@
 					<div class="signin-form">
 						<h2 class="form-title">User Login</h2>
 						<form method="post" action="<%= request.getContextPath() %>/login" class="register-form" id="login-form" onsubmit="return validation()">
+						<%
+								if(request.getParameter("email")!=null){
+									if(request.getParameter("email").equals("invalid")){
+										out.println("*Invalid email/password*");
+									}
+								}
+							%>
 							<span id="empty_email" style="color: red;"></span>
 							<div class="form-group">
 								<label for="username"><i
