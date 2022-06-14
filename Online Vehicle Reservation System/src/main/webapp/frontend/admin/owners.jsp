@@ -1,7 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Admin Dashboard | OVR</title>
+
 <link rel="stylesheet" href="../../assests/bootstrap/css/bootstrap.min.css">
 
 
@@ -10,6 +13,7 @@
 <!-- Font Awesome -->
 <link rel="stylesheet" href="../../assests/fonts/material-icon/css/material-design-iconic-font.min.css" />
 <link href="admin.css" rel="stylesheet" type="text/css" />
+
 
 <script src="<%= request.getContextPath() %>/assets-admin/js/jquery.min.js" type="text/javascript"></script>
 <script src="<%= request.getContextPath() %>/assets-admin/js/jquery.validate.js" type="text/javascript"></script>
@@ -42,7 +46,7 @@
 <div id="nav-wrapper">
   <ul id="subnav">
     <li><a href="../../index.jsp" target="_blank">Preview Site</a></li>
-    <li><a href="owners.jsp">Owners List</a></li>
+    <li><a href="owners.jsp"><b>Owners List</b></a></li>
     <li><a href="feature-vehicle.jsp">Feature Vehicle Requests</a></li>
     <li><a href="">Change Password</a></li>
     <li><a href="">Log Out</a></li>
@@ -54,13 +58,42 @@
   <div class="wrapper">
     <div id="maincontent">
       <div class="contentainer">
-        <div class="page-header">Welcome To Admin Dashboard</div>
-        <div class="content-box">You have Sucessfully Logged in.<br />
-          Please use the Navigation to manage your website.</div>
-      </div>
-      <div class="contentainer">
-        <div class="page-header1">Security Alert</div>
-        <div class="content-box">Please do not forget to logout after managing your website.</div>
+        <table class="table table-striped">
+  			<thead>
+			    <tr>
+			      <th scope="col">SN</th>
+			      <th scope="col">Name</th>
+			      <th scope="col">Phone</th>
+			      <th scope="col">Email</th>
+			      <th scope="col">Options</th>
+			    </tr>
+			  </thead>
+			  <%@page import="java.sql.*" %>
+		<% 
+         Connection conn = null;
+         int count = 1;
+         try {
+         		Class.forName("com.mysql.cj.jdbc.Driver");
+         		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ovr","root","");
+         		PreparedStatement pst = conn.prepareStatement("Select * from owners");
+         		ResultSet rs = pst.executeQuery();
+         		while(rs.next()){
+         %>
+			  <tbody>
+			    <tr>
+			      <th scope="row"><%=count++%></th>
+			      <td><%=rs.getString("name")%></td>
+			      <td><%=rs.getString("contact")%></td>
+			      <td><%=rs.getString("email")%></td>
+			      <td><a href="owner-delete.jsp?id=<%=rs.getString("owner_id") %>" class="btn btn-danger">Delete</a></td>
+			    </tr>
+			    </tbody>
+			    <%}}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+     %>
+  		</table>	
       </div>
     </div>
   </div>

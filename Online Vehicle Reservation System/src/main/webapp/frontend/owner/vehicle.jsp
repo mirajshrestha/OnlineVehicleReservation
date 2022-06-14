@@ -106,10 +106,14 @@
                                         <%=rs.getString(3) %>
                                     </td>
                                     <td>
-                                        
+                                        <%if(rs.getString("feature_status")== null){ %>
+                                        <a href="request-feature.jsp?id=<%=rs.getString(1) %>">Request</a>
+                                        <%}else if(rs.getString("feature_status")!= null){%>
+                                        <%=rs.getString("feature_status") %>
+                                        <%} %>
                                     </td>
                                     <td>
-                                        <%=rs.getString(5)%>-<%=rs.getString(6) %>
+                                        <%=rs.getString(5)%><br>-<br><%=rs.getString(6) %>
                                     </td>
                                     <td><a href="edit-vehicle.jsp?id=<%=rs.getString(1) %>">Edit</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="delete.jsp?id=<%=rs.getString(1) %>">Delete</a></td>
                                 </tr>

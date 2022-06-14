@@ -60,7 +60,7 @@
 					</div>
 					<div class="signup-image">
 						<figure>
-							
+							<img alt="" src="../../images/signup-image.jpg">
 						</figure>
 						<a href="login.jsp" class="signup-image-link">I am already a member</a>
 					</div>
@@ -141,6 +141,10 @@
 		if(isNaN(phone)){
 			document.getElementById('empty_num').innerHTML =" ** user must write digits only not characters";
 			return false;
+		}
+		if((phone.length <= 9) || (phone.length > 13)) {
+			document.getElementById('empty_num').innerHTML =" *Invalid phone number*";
+			return false;	
 		}
 	}
 </script>

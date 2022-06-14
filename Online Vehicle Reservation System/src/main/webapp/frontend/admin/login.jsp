@@ -5,18 +5,36 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" href="../../assests/bootstrap/css/bootstrap.min.css">
 </head>
 <body>
-	<div class="admin-loginbox">
-		<img src="" class="user">
-		<h2>Administrator</h2>
-		<form action="<%= request.getContextPath() %>/adminLogin" method="post">
-			<p>Username</p>
-			<input type="text" name="username" placeholder="Enter Username" required>
-			<p>Password</p>
-			<input type="password" name="password" placeholder="**********" required>
-			<input type="submit" value="Sign In">
-		</form>
-	</div>
+	<div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card border-0 shadow rounded-3 my-5">
+          <div class="card-body p-4 p-sm-5">
+            <h5 class="card-title text-center mb-5 fw-light fs-5">Administrator</h5>
+            <form action="<%= request.getContextPath() %>/adminLogin" method="post">
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" name="username">
+                <label for="floatingInput">Username</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="password" class="form-control" name="password">
+                <label for="floatingPassword">Password</label>
+              </div>
+ 			  <hr class="my-4">
+              <div class="d-grid">
+              <input type="submit" value="Sign In" class="btn btn-primary btn-login text-uppercase fw-bold"">
+                
+              </div>
+            
+              
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

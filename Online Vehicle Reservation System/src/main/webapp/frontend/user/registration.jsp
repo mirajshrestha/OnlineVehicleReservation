@@ -75,7 +75,7 @@
 					</div>
 					<div class="signup-image">
 						<figure>
-							
+							<img alt="" src="../../images/signup-image.jpg">
 						</figure>
 						<a href="login.jsp" class="signup-image-link">I am already a member</a>
 					</div>
@@ -135,7 +135,7 @@
 			return false;
 		}
 		if((pwd.length <= 5) || (pwd.length > 20)) {
-			document.getElementById('empty_password').innerHTML =" ** Passwords lenght must be between  5 and 20";
+			document.getElementById('empty_password').innerHTML =" ** Passwords length must be between  5 and 20";
 			return false;	
 		}
 		
@@ -157,6 +157,10 @@
 		if(isNaN(phone)){
 			document.getElementById('empty_num').innerHTML =" ** user must write digits only not characters";
 			return false;
+		}
+		if((phone.length <= 9) || (phone.length > 13)) {
+			document.getElementById('empty_num').innerHTML =" *Invalid phone number*";
+			return false;	
 		}
 	}
 </script>

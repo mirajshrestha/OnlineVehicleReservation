@@ -73,61 +73,34 @@
                 <h1 class="heading">Featured <span>Vehicles</span></h1>
                 <div class="swiper vehicle-slider">
                     <div class="swiper-wrapper">
-
+						<%@page import="java.sql.*" %>
+                        <% 
+                            Connection conn = null;
+                        	int count = 1;
+                            try {
+                    			Class.forName("com.mysql.cj.jdbc.Driver");
+                    			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ovr","root","");
+                    			PreparedStatement pst = conn.prepareStatement("Select vehicles.*, owners.name from vehicles JOIN owners ON owners.owner_id = vehicles.owner_id where `feature_status` = 'Accepted' ");
+                    			ResultSet rs = pst.executeQuery();
+                    			while(rs.next()){
+                        %>
                         <div class="swiper-slide box">
-                            <img src="../image/a.png" alt="">
+                            <img src="<%= request.getContextPath() +"/images/"+ rs.getString(10)%>" alt="">
                             <div class="content">
-                                <h3>Vehicle Name</h3>
-                                <p>Owner Name</p>
-                                <p>Address</p>
-                                <a href="#" class="btn">Inspect</a>
+                                <h3><%=rs.getString(2) %> <%=rs.getString(3) %></h3>
+                                <p><%=rs.getString("owners.name") %></p>
+                                <p><%=rs.getString("currentlocation") %></p>
+                                <p><%=rs.getString("dailyfare")%>/day </p>
+                                <a href="#" class="btn btn-info">Vehicle details</a>
 
                             </div>
                         </div>
-
-                        <div class="swiper-slide box">
-                            <img src="../image/b.png" alt="">
-                            <div class="content">
-                                <h3>Vehicle Name</h3>
-                                <p>Owner Name</p>
-                                <p>Address</p>
-                                <a href="#" class="btn">Inspect</a>
-
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide box">
-                            <img src="../image/c.png" alt="">
-                            <div class="content">
-                                <h3>Vehicle Name</h3>
-                                <p>Owner Name</p>
-                                <p>Address</p>
-                                <a href="#" class="btn">Inspect</a>
-
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide box">
-                            <img src="../image/c.png" alt="">
-                            <div class="content">
-                                <h3>Vehicle Name</h3>
-                                <p>Owner Name</p>
-                                <p>Address</p>
-                                <a href="#" class="btn">Inspect</a>
-
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide box">
-                            <img src="../image/c.png" alt="">
-                            <div class="content">
-                                <h3>Vehicle Name</h3>
-                                <p>Owner Name</p>
-                                <p>Address</p>
-                                <a href="#" class="btn">Inspect</a>
-
-                            </div>
-                        </div>
+						<%}}
+						catch(Exception e){
+							
+						}
+						%>
+                        
 
 
                     </div>

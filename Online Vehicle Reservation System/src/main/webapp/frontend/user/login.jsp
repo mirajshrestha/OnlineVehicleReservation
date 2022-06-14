@@ -26,7 +26,7 @@
 				<div class="signin-content">
 				<div class="signin-image">
 						<figure>
-							
+							<img alt="" src="../../images/signin-image.jpg">
 						</figure>
 						<a href="registration.jsp" class="signup-image-link">Create an
 							account</a>
@@ -57,12 +57,6 @@
 									placeholder="Password" />
 									
 									
-							</div>
-							<div class="form-group">
-								<input type="checkbox" name="remember-me" id="remember-me"
-									class="agree-term" /> <label for="remember-me"
-									class="label-agree-term"><span><span></span></span>Remember
-									me</label>
 							</div>
 							<div class="form-group form-button">
 								<input type="submit" name="signin" id="signin"

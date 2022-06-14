@@ -45,7 +45,7 @@ html{
     clip-path: polygon(0 90%, 100% 80%, 100% 100% , 0 100%);
 
 }
-
+/*
 .btn{
     display: inline-block;
     margin-top: 1 rem;
@@ -61,7 +61,7 @@ html{
 .btn:hover{
     background: cyan;
 }
-
+*/
 .nav{
     position: fixed;
     top: 0; left: 0; right: 0;
