@@ -124,4 +124,34 @@
     <servlet-name>adminLogin</servlet-name>
     <url-pattern>/adminLogin</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>reviews</display-name>
+    <servlet-name>reviews</servlet-name>
+    <servlet-class>com.user.registration.reviews</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>reviews</servlet-name>
+    <url-pattern>/reviews</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>adminLogout</display-name>
+    <servlet-name>adminLogout</servlet-name>
+    <servlet-class>com.ovr.admin.adminLogout</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>adminLogout</servlet-name>
+    <url-pattern>/adminLogout</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>changePassword</display-name>
+    <servlet-name>changePassword</servlet-name>
+    <servlet-class>com.ovr.admin.changePassword</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>changePassword</servlet-name>
+    <url-pattern>/changePassword</url-pattern>
+  </servlet-mapping>
 </web-app>

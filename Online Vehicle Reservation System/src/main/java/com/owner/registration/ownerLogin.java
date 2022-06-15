@@ -42,7 +42,7 @@ public class ownerLogin extends HttpServlet {
 				session.setAttribute("userType", "owner");
 				res.sendRedirect("frontend/owner/index.jsp");
 			}else {
-				res.sendRedirect("frontend/owner/login.jsp");
+				res.sendRedirect("frontend/owner/login.jsp?email=invalid");
 			}
 			
 		} catch (ClassNotFoundException e) {

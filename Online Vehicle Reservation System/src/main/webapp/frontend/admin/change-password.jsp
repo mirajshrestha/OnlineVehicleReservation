@@ -1,10 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Admin Dashboard | OVR</title>
-
 <link rel="stylesheet" href="../../assests/bootstrap/css/bootstrap.min.css">
 
 
@@ -13,7 +10,6 @@
 <!-- Font Awesome -->
 <link rel="stylesheet" href="../../assests/fonts/material-icon/css/material-design-iconic-font.min.css" />
 <link href="admin.css" rel="stylesheet" type="text/css" />
-
 
 <script src="<%= request.getContextPath() %>/assets-admin/js/jquery.min.js" type="text/javascript"></script>
 <script src="<%= request.getContextPath() %>/assets-admin/js/jquery.validate.js" type="text/javascript"></script>
@@ -51,9 +47,9 @@
 <div id="nav-wrapper">
   <ul id="subnav">
     <li><a href="../../index.jsp" target="_blank">Preview Site</a></li>
-    <li><a href="owners.jsp"><b>Owners List</b></a></li>
+    <li><a href="owners.jsp">Owners List</a></li>
     <li><a href="feature-vehicle.jsp">Feature Vehicle Requests</a></li>
-    <li><a href="change-password.jsp">Change Password</a></li>
+    <li><a href="change-password.jsp"><b>Change Password</b></a></li>
     <li><a href="<%=request.getContextPath()%>/adminLogout">Log Out</a></li>
   </ul>
   <div class="clear"></div>
@@ -63,45 +59,55 @@
   <div class="wrapper">
     <div id="maincontent">
       <div class="contentainer">
-        <table class="table table-striped">
-  			<thead>
-			    <tr>
-			      <th scope="col">SN</th>
-			      <th scope="col">Name</th>
-			      <th scope="col">Phone</th>
-			      <th scope="col">Email</th>
-			      <th scope="col">Options</th>
-			    </tr>
-			  </thead>
-			  <%@page import="java.sql.*" %>
-		<% 
-         Connection conn = null;
-         int count = 1;
-         try {
-         		Class.forName("com.mysql.cj.jdbc.Driver");
-         		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ovr","root","");
-         		PreparedStatement pst = conn.prepareStatement("Select * from owners");
-         		ResultSet rs = pst.executeQuery();
-         		while(rs.next()){
-         %>
-			  <tbody>
-			    <tr>
-			      <th scope="row"><%=count++%></th>
-			      <td><%=rs.getString("name")%></td>
-			      <td><%=rs.getString("contact")%></td>
-			      <td><%=rs.getString("email")%></td>
-			      <td><a href="owner-delete.jsp?id=<%=rs.getString("owner_id") %>" class="btn btn-danger">Delete</a></td>
-			    </tr>
-			    </tbody>
-			    <%}}
-		catch(Exception e){
-			e.printStackTrace();
-		}
-     %>
-  		</table>	
+        <div class="page-header">Change Admin Password</div>
+        <div class="content-box">
+        <form action="<%= request.getContextPath() %>/changePassword" method="post" onsubmit="return validation()">
+      		<table class="fancy-table">
+      		
+      			<tr>
+      				<th>New Password</th>
+      				<td><input type="password" name="new_pass" id="pass"></td>
+      			</tr>
+      			
+      			<tr>
+      				<th>Repeat New Password</th>
+      				<td><input type="password" name="new_pass_r" id="re_pass"></td>
+      			</tr>
+      			 
+      			<tr>
+      				<th>&nbsp;</th>
+      				<td><button type="submit">Change Password</button></td>
+      			</tr>
+      		
+      		</table>  	
+        </form>
+        </div>
       </div>
+      
     </div>
   </div>
   <div class="push"></div>
 </div>
+<script type="text/javascript">
+function validation(){
+var pwd = document.getElementById("pass").value;
+var confirm_pwd = document.getElementById("re_pass").value;
+
+if(pwd == ""){
+	alert("Please enter password");
+	//document.getElementById("empty_password").innerHTML = "*Please enter password*";
+	return false;
+}
+if(pwd!=confirm_pwd){
+	alert("Password does not match");
+	//document.getElementById('incorrect_pwd').innerHTML =" ** Password does not match the confirm password";
+	return false;
+}
+if(confirm_pwd == ""){
+	alert("Please repeat password");
+	//document.getElementById("incorrect_pwd").innerHTML = "*Please enter password*";
+	return false;
+}
+}
+</script>
 </body>

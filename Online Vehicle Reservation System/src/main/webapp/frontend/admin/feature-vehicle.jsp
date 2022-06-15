@@ -19,7 +19,12 @@
 <script src="<%= request.getContextPath() %>/assets-admin/js/jquery.validate.js" type="text/javascript"></script>
 <script src="<%= request.getContextPath() %>/assets-admin/js/tooltip.js" type="text/javascript"></script>
 <script src="<%= request.getContextPath() %>/assets-admin/js/checks.js" type="text/javascript"></script>
-
+<%
+		if(session.getAttribute("userType")!="admin"){
+			response.sendRedirect("login.jsp");
+			return;
+		}
+	%>
 </head>
 <body>
 <div id="main_wrapper">
@@ -32,13 +37,13 @@
 	</div>
 	<div class="header-right">
 		<span class="txt1">Hello Admin,</span> Welcome to your Dashboard <br />
-		<a href="<%=request.getContextPath()%>/admin/logout">Logout</a> | <a
-			href="<%= request.getContextPath() %>/admin/change-password">Change Password</a>
+		<a href="<%=request.getContextPath()%>/adminLogout">Logout</a> | <a
+			href="change-password.jsp">Change Password</a>
 	</div>
 	<div class="clear"></div>
 </div>
 <ul id="nav">
-  <li><a href="" class=""><i class="zmdi zmdi-view-dashboard"></i> Dashboard</a></li>
+  <li><a href="index.jsp" class=""><i class="zmdi zmdi-view-dashboard"></i> Dashboard</a></li>
   <!-- <li><a href="#" class="menulink"><i class="fa fa-book"></i> CMS</a></li>  --> 
 </ul>
 <div class="clear"></div>
@@ -48,8 +53,8 @@
     <li><a href="../../index.jsp" target="_blank">Preview Site</a></li>
     <li><a href="owners.jsp">Owners List</a></li>
     <li><a href="feature-vehicle.jsp"><b>Feature Vehicle Requests</b></a></li>
-    <li><a href="">Change Password</a></li>
-    <li><a href="">Log Out</a></li>
+    <li><a href="change-password.jsp">Change Password</a></li>
+    <li><a href="<%=request.getContextPath()%>/adminLogout">Log Out</a></li>
   </ul>
   <div class="clear"></div>
 </div>

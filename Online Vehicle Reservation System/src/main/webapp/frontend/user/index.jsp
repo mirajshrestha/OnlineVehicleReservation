@@ -81,7 +81,7 @@
 				<td><%=rs.getString("for_date")%></td>
 				<td><%=rs.getString("booked_days")%> day(s)</td>
 				<td>Rs.<%=rs.getString("total_fare")%></td>
-				<td><a href="" class="btn">Write a review</a>
+				<td><a href="review.jsp?booking_id=<%= rs.getInt("booking_id") %>" class="btn">Write a review</a>
 				<a href="cancel-booking.jsp?booking_id=<%= rs.getInt("booking_id") %>" class="btn">Cancel Booking</a>
 				</td>
 			</tr>

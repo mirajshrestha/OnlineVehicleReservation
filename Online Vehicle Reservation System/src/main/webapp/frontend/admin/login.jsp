@@ -8,6 +8,12 @@
 <link rel="stylesheet" href="../../assests/bootstrap/css/bootstrap.min.css">
 </head>
 <body>
+<%
+		if(session.getAttribute("userType")=="admin"){
+			response.sendRedirect("index.jsp");
+		}
+	%>
+	
 	<div class="container">
     <div class="row">
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
@@ -36,5 +42,16 @@
       </div>
     </div>
   </div>
+  <script type="text/javascript">
+  <%
+	if(request.getParameter("username")!=null){
+		if(request.getParameter("username").equals("invalid")){
+	%>
+	alert('Invalid username/password.');
+	<%
+		}
+	}
+%>
+  </script>
 </body>
 </html>

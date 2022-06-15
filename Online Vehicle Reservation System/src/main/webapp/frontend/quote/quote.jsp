@@ -122,7 +122,7 @@
                                 <p class="Model"><%=rs.getString("Model") %></p>
                                 <p class="DailyFare">Rs. <%=rs.getString("dailyfare") %></p>
                                 <p class="FromTo"><%=rs.getString("fromdate")%> to <%=rs.getString("todate") %></p>
-                                <a href="#">View Review</a>
+                                <a href="reviews.jsp?vehicle_id=<%=rs.getString("vehicle_id") %>">View Review</a>
                                 <a href="booking-details.jsp?vehicle_id=<%=rs.getString("vehicle_id") %>">Book this car</a>
                             </div>
                         </div>
