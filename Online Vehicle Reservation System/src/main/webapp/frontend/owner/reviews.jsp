@@ -21,8 +21,8 @@
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ovr","root","");
-			String id = request.getParameter("vehicle_id"); 
-    		PreparedStatement pst = conn.prepareStatement("Select * from bookings where vehicle_id = '"+id+"' ");
+			String id = request.getParameter("booking_id"); 
+    		PreparedStatement pst = conn.prepareStatement("Select bookings.*, users.name from bookings JOIN users ON users.id = bookings.id where booking_id = '"+id+"' ");
                     			
     		rs = pst.executeQuery();
     		while(rs.next()){
@@ -31,23 +31,28 @@
 		
 		<tr>
 			<td>
-				<div class="review"> yoyoyojojojojohohohoho </div>
+				<%if(rs.getString("review").isEmpty()){ %>
+				<div class="review">Review: No reviews yet.</div>
+				<%}else{ %>
+				<div class="review">Review: <%= rs.getString("review") %></div>
 				<div class="review-by">
-					<h2>baaaka</h2>
-					<span>date</span>
+					<h2>Reviewd By:<%= rs.getString("users.name") %></h2>
+					<span>Date: <%= rs.getString("review-date") %></span>
 				</div>
+				<%} %>
+				
 			</td>
 		</tr>
-		
-		<tr><td>No reviews yet.</td></tr>
-		
-	</table>
-	<%
+		<%
                     	}}
 						catch(Exception e){
 							e.printStackTrace();
 						}
 						%>
+		<tr><td></td></tr>
+		
+	</table>
+	
 	</div>
 </div>
 </body>

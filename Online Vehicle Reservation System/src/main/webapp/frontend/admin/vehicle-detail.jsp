@@ -60,21 +60,18 @@
 </div>
 
   </div>
-  <div class="wrapper">
-    <div id="maincontent">
-      <div class="contentainer">
-        <table class="table table-striped">
-  			<thead>
-			    <tr>
-			      <th scope="col">SN</th>
-			      <th scope="col">Vehicle Model</th>
-			      <th scope="col">Manufacturer</th>
-			      <th scope="col">Owner</th>
-			      <th scope="col">Details</th>
-			      <th scope="col">Options</th>
-			    </tr>
-			  </thead>
-			  <%@page import="java.sql.*" %>
+
+<div id="main_wrapper">
+		<div class="wrapper">
+		</div>
+		<div class="wrapper">
+			<div id="maincontent">
+
+				<div class="contentainer">
+					<div class="page-header">Vehicle Complete Details</div>
+					<div class="content-box">
+						
+							  <%@page import="java.sql.*" %>
 		<% 
          Connection conn = null;
          int count = 1;
@@ -85,26 +82,53 @@
          		ResultSet rs = pst.executeQuery();
          		while(rs.next()){
          %>
-			  <tbody>
-			    <tr>
-			      <th scope="row"><%=count++%></th>
-			      <td><%=rs.getString("Model")%></td>
-			      <td><%=rs.getString("Manufacturer")%></td>
-			      <td><%=rs.getString("owners.name")%></td>
-			      <td><a href="vehicle-detail.jsp?id=<%=rs.getString("vehicle_id") %>" class="btn btn-info">Full Details</a></td>
-			      <td><a href="accept-request.jsp?id=<%=rs.getString("vehicle_id") %>" class="btn btn-success">Accept</a>
-			      <a href="reject-request.jsp?id=<%=rs.getString("vehicle_id") %>" class="btn btn-danger">Reject</a></td>
-			    </tr>
-			    </tbody>
-			    <%}}
+						<table>			
+						<tr>
+							<th style="width:20%">Model</th>
+							<td><%=rs.getString("Model")%></td>
+						</tr>
+						<tr>
+							<th>Image</th>
+							<td><img src="<%= request.getContextPath() +"/images/"+ rs.getString(10)%>" width="300"></td>
+						</tr>
+						<tr>
+							<th>Vehicle Owner</th>
+							<td><%= rs.getString("owners.name") %></td>
+						</tr>
+						<tr>
+							<th>Manufacturer</th>
+							<td><%=rs.getString("Manufacturer")%></td>
+						</tr>
+						<tr>
+							<th>Available From Date</th>
+							<td><%=rs.getString(5)%></td>
+						</tr>
+						<tr>
+							<th>Available To Date</th>
+							<td><%=rs.getString(6) %></td>
+						</tr>
+						<tr>
+							<th>Vehicle Available</th>
+							<td><%=rs.getString("currentlocation") %></td>
+						</tr>
+						<tr>
+							<th>Daily Fare</th>
+							<td>Rs. <%=rs.getString("dailyfare") %></td>
+						</tr>
+					
+						</table>
+					</div>
+				</div>
+
+<%}}
 		catch(Exception e){
 			e.printStackTrace();
 		}
-     %>
-  		</table>	
-      </div>
-    </div>
-  </div>
-  <div class="push"></div>
-</div>
+         %>
+
+
+			</div>
+		</div>
+		<div class="push"></div>
+	</div>
 </body>

@@ -19,14 +19,16 @@ public class reviews extends HttpServlet {
        
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		String review = req.getParameter("review");
+		String date = req.getParameter("review_date");
 		String id = req.getParameter("booking_id");
 		
 		Connection conn = null;
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ovr","root","");
-			PreparedStatement pst = conn.prepareStatement("UPDATE `bookings` SET `review` = ? WHERE `bookings`.`booking_id` = '"+id+"' ");
+			PreparedStatement pst = conn.prepareStatement("UPDATE `bookings` SET `review` = ?, `review-date` = ? WHERE `bookings`.`booking_id` = '"+id+"' ");
 			pst.setString(1, review);
+			pst.setString(2, date);
 			pst.executeUpdate();
 			res.sendRedirect("frontend/user/index.jsp?review=success");
 		} catch (ClassNotFoundException e) {
