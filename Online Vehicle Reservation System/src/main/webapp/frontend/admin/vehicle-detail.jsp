@@ -73,12 +73,13 @@
 						
 							  <%@page import="java.sql.*" %>
 		<% 
+		String id = request.getParameter("id");
          Connection conn = null;
          int count = 1;
          try {
          		Class.forName("com.mysql.cj.jdbc.Driver");
          		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ovr","root","");
-         		PreparedStatement pst = conn.prepareStatement("Select vehicles.*, owners.name from vehicles JOIN owners ON owners.owner_id = vehicles.owner_id where feature_status = 'Requested' ");
+         		PreparedStatement pst = conn.prepareStatement("Select vehicles.*, owners.name from vehicles JOIN owners ON owners.owner_id = vehicles.owner_id where vehicle_id = '"+id+"' ");
          		ResultSet rs = pst.executeQuery();
          		while(rs.next()){
          %>

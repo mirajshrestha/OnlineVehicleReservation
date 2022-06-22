@@ -10,6 +10,28 @@
 <link rel="stylesheet" href="../../assests/css/style.css">
 </head>
 <body>
+	<header class="header">
+        <div class="logo-style">
+			<a href="../../index.jsp" style="text-decoration: none;">
+				<h2 class="title-style">
+					<span>O</span>nline<span>V</span>ehicle<span>R</span>eservation
+				</h2>
+			</a>
+		</div>
+
+      <nav class="navbar">
+        
+        <ul class="navbar-list">
+          <li><a class="navbar-link" href="../../index.jsp">Home</a></li>
+          
+        </ul>
+      </nav>
+
+      <div class="mobile-navbar-btn">
+        <ion-icon name="menu-outline" class="mobile-nav-icon"></ion-icon>
+        <ion-icon name="close-outline" class="mobile-nav-icon"></ion-icon>
+      </div>
+    </header>
 	<div class="main">
 
 		<section class="signup">
@@ -19,7 +41,7 @@
 						<h2 class="form-title">Sign up</h2>
 					
 						<form method="post" action="<%= request.getContextPath() %>/Registration" class="register-form" onsubmit="return validation()" >
-							<span id="empty_name" style="color: red;"></span>
+							<p id="empty_name" style="color: red;"></p>
 							<div class="form-group">
 								<label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label> 
 								<input type="text" name="name" id="name" placeholder="Full name" >	
@@ -31,12 +53,12 @@
 									}
 								}
 							%>
-							<span id="empty_email" style="color: red;"></span>
+							<p id="empty_email" style="color: red;"></p>
 							<div class="form-group">
 								<label for="email"><i class="zmdi zmdi-email"></i></label> 
 								<input type="email" name="email" id="email" placeholder="Email" >
 							</div>
-							<span id="empty_password" style="color: red;"></span>
+							<p id="empty_password" style="color: red;"></p>
 							<div class="form-group">
 								<label for="pass"><i class="zmdi zmdi-lock"></i></label> 
 								<input type="password" name="pass" id="pass" placeholder="Password" >
@@ -46,7 +68,7 @@
 								<label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
 								<input type="password" name="re_pass" id="re_pass" placeholder="Re-enter your password" >
 							</div>
-							<span id="empty_num" style="color: red;"></span>
+							<p id="empty_num" style="color: red;"></p>
 							<div class="form-group">
 								<label for="contact"><i class="zmdi zmdi-phone"></i></label>
 								<input type="text" name="contact" id="contact" placeholder="Contact no" >

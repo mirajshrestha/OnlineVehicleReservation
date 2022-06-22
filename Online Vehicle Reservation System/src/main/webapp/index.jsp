@@ -91,7 +91,7 @@
                                 <p><%=rs.getString("owners.name") %></p>
                                 <p><%=rs.getString("currentlocation") %></p>
                                 <p><%=rs.getString("dailyfare")%>/day </p>
-                                <a href="#" class="btn btn-info">Vehicle details</a>
+                                <a href="frontend/quote/vehicle-details.jsp?vehicle_id=<%=rs.getString("vehicle_id") %>" class="btn btn-info">Vehicle details</a>
 
                             </div>
                         </div>

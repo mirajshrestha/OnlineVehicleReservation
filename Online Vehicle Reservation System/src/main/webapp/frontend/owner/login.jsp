@@ -17,6 +17,28 @@
 			response.sendRedirect("index.jsp");
 		}
 	%>
+	<header class="header">
+        <div class="logo-style">
+			<a href="../../index.jsp" style="text-decoration: none;">
+				<h2 class="title-style">
+					<span>O</span>nline<span>V</span>ehicle<span>R</span>eservation
+				</h2>
+			</a>
+		</div>
+
+      <nav class="navbar">
+        
+        <ul class="navbar-list">
+          <li><a class="navbar-link" href="../../index.jsp">Home</a></li>
+          
+        </ul>
+      </nav>
+
+      <div class="mobile-navbar-btn">
+        <ion-icon name="menu-outline" class="mobile-nav-icon"></ion-icon>
+        <ion-icon name="close-outline" class="mobile-nav-icon"></ion-icon>
+      </div>
+    </header>
 	<div class="main">
 
 		<!-- Sing in  Form -->

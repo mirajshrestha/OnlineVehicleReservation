@@ -1,13 +1,73 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
+
+	<html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Owner Dashboard | OVRS</title>
+<link rel="stylesheet" href="../../assests/bootstrap/css/bootstrap.min.css">
+
+
+
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="../../assests/fonts/material-icon/css/material-design-iconic-font.min.css" />
+<link href="owner.css" rel="stylesheet" type="text/css" />
+
+<script src="<%= request.getContextPath() %>/assets-admin/js/jquery.min.js" type="text/javascript"></script>
+<script src="<%= request.getContextPath() %>/assets-admin/js/jquery.validate.js" type="text/javascript"></script>
+<script src="<%= request.getContextPath() %>/assets-admin/js/tooltip.js" type="text/javascript"></script>
+<script src="<%= request.getContextPath() %>/assets-admin/js/checks.js" type="text/javascript"></script>
+<%
+		if(session.getAttribute("email")==null){
+			response.sendRedirect("login.jsp");
+		}
+		if(session.getAttribute("userType")!="owner"){
+			response.sendRedirect("login.jsp");
+		}
+	%>
 </head>
 <body>
-<%@page import="java.sql.*" %>
+
+<div id="main_wrapper">
+  <div class="wrapper">
+  	<div id="header">
+	<div class="logo">
+		<a href="../../index.jsp">
+			<h1>Online Vehicle Reservation</h1>
+		</a>
+	</div>
+	<div class="header-right">
+		<span class="txt1">Hello ${owner_name},</span> Welcome to your Dashboard <br />
+		<a href="<%= request.getContextPath() %>/ownerLogout">Logout</a> | <a
+			href="profile.jsp">Update Profile</a>
+	</div>
+	<div class="clear"></div>
+</div>
+<ul id="nav">
+  <li><a href="index.jsp" class=""><i class="zmdi zmdi-view-dashboard"></i> Dashboard</a></li>
+  <!-- <li><a href="#" class="menulink"><i class="fa fa-book"></i> CMS</a></li>  --> 
+</ul>
+<div class="clear"></div>
+
+<div id="nav-wrapper">
+  <ul id="subnav">
+    <li><a href="../../index.jsp" target="_blank">Preview Site</a></li>
+    <li><a href="profile.jsp">Profile</a></li>
+    <li><a href="vehicle.jsp">Vehicles</a></li>
+    <li><a href="bookings.jsp"><b>Bookings</b></a></li>
+    <li><a href="<%= request.getContextPath() %>/ownerLogout">Log Out</a></li>
+  </ul>
+  <div class="clear"></div>
+</div>
+
+  </div>
+  <div class="wrapper">
+    <div id="maincontent">
+      <div class="contentainer">
+        <div class="page-header">User Details</div>
+        <div class="content-box">
+        <%@page import="java.sql.*" %>
 		<% 
          String user = request.getParameter("user_id");
          Connection conn = null;
@@ -19,47 +79,45 @@
          		ResultSet rs = pst.executeQuery();
          		while(rs.next()){
          %>
-<div id="main-content">
-	<div class="main-content-header">
-		<h1 class="left"><i class="fa fa-user"></i> User Details</h1>
-		<div class="clear"></div>
-	</div>
-	
-	<div class="main-content-body">
-	
-	<table class="fancy-table">
-		<tr>
-			<th><label>Full Name: </label></th>
-			<td><%= rs.getString("name") %></td>
-		</tr>
-		<tr>
-			<th><label>Contact No.: </label></th>
-			<td><%= rs.getString("contact") %></td>
-		</tr>
-		<tr>
-			<th><label>Email: </label></th>
-			<td><%= rs.getString("email") %>
-		</tr>
-		<tr>
-			<th><label>Address: </label></th>
-			<td><%= rs.getString("address") %>
-		</tr>
-	
-		<tr>
-			<th><label>Driving License</label></th>
-			<td>
-				<img src="<%= request.getContextPath() +"/doc_images/"+ rs.getString(7)%>" width="200">	
-			</td>
-		</tr>
-		<%}}
+        	<table>			
+						<tr>
+							<th style="width:20%">Full Name</th>
+							<td><%= rs.getString("name") %></td>
+						</tr>
+						<tr>
+							<th>Contact No.</th>
+							<td><%= rs.getString("contact") %></td>
+						</tr>
+						<tr>
+							<th>Email</th>
+							<td><%= rs.getString("email") %></td>
+						</tr>
+						<tr>
+							<th>Address</th>
+							<td><%= rs.getString("address") %></td>
+						</tr>
+						<tr>
+							<th>Driving License</th>
+							<td><img src="<%= request.getContextPath() +"/doc_images/"+ rs.getString(7)%>" width="300"></td>
+						</tr>
+						
+					<%}}
 		catch(Exception e){
 			e.printStackTrace();
 		}
      %>
-		
-	</table>
-	
-	</div>
+						</table>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="push"></div>
 </div>
+<script type="text/javascript">
+
+</script>
 </body>
+	
+
 </html>

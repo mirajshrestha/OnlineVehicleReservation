@@ -1,14 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
+
+	<html>
 <head>
-<meta charset="ISO-8859-1">
-<link rel="stylesheet" href="owner.css">
-<title>Insert title here</title>
-</head>
-<body>
-	<%
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Owner Dashboard | OVRS</title>
+<link rel="stylesheet" href="../../assests/bootstrap/css/bootstrap.min.css">
+
+
+
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="../../assests/fonts/material-icon/css/material-design-iconic-font.min.css" />
+<link href="owner.css" rel="stylesheet" type="text/css" />
+
+<script src="<%= request.getContextPath() %>/assets-admin/js/jquery.min.js" type="text/javascript"></script>
+<script src="<%= request.getContextPath() %>/assets-admin/js/jquery.validate.js" type="text/javascript"></script>
+<script src="<%= request.getContextPath() %>/assets-admin/js/tooltip.js" type="text/javascript"></script>
+<script src="<%= request.getContextPath() %>/assets-admin/js/checks.js" type="text/javascript"></script>
+<%
 		if(session.getAttribute("email")==null){
 			response.sendRedirect("login.jsp");
 		}
@@ -16,36 +26,57 @@
 			response.sendRedirect("login.jsp");
 		}
 	%>
-	<nav class="nav-bar">
-        <nav class="main-style">
-            <div class="logo-style">
-                <a href="">
-                    <h2 class="title-style">
-                        <span>O</span>nline<span>V</span>ehicle<span>R</span>eservation
-                    </h2>
-                </a>
-            </div>
-            <div class="menu-style">
-                <ul class="tab-style">
-                    <li><a href="../../index.jsp">Home</a></li>
-                    <li><a href="">Get a Quote</a></li>
-                    <li><a href="../owner/login.jsp">Hi, ${owner_name}</a></li>
-                    <li><form action="<%= request.getContextPath() %>/ownerLogout">
-					<input type = "submit" value = "Logout" style="cursor: pointer; padding: 16px 32px; border: none;">
-					</form>
-					</li>
-                </ul>
-            </div>
-        </nav>
-    </nav>
-<%--	HI OWNER ${email} --%>
-	<br>
-	
-	<div class="owner-index">
-	
-	<a href ="profile.jsp">Profile</a><br>
-	<a href ="vehicle.jsp">Vehicles</a><br>
-	<a href ="bookings.jsp">Bookings</a>
+</head>
+<body>
+<div id="main_wrapper">
+  <div class="wrapper">
+  	<div id="header">
+	<div class="logo">
+		<a href="../../index.jsp">
+			<h1>Online Vehicle Reservation</h1>
+		</a>
 	</div>
+	<div class="header-right">
+		<span class="txt1">Hello ${owner_name},</span> Welcome to your Dashboard <br />
+		<a href="<%= request.getContextPath() %>/ownerLogout">Logout</a> | <a
+			href="profile.jsp">Update Profile</a>
+	</div>
+	<div class="clear"></div>
+</div>
+<ul id="nav">
+  <li><a href="index.jsp" class=""><i class="zmdi zmdi-view-dashboard"></i> Dashboard</a></li>
+  <!-- <li><a href="#" class="menulink"><i class="fa fa-book"></i> CMS</a></li>  --> 
+</ul>
+<div class="clear"></div>
+
+<div id="nav-wrapper">
+  <ul id="subnav">
+    <li><a href="../../index.jsp" target="_blank">Preview Site</a></li>
+    <li><a href="profile.jsp">Profile</a></li>
+    <li><a href="vehicle.jsp">Vehicles</a></li>
+    <li><a href="bookings.jsp">Bookings</a></li>
+    <li><a href="<%= request.getContextPath() %>/ownerLogout">Log Out</a></li>
+  </ul>
+  <div class="clear"></div>
+</div>
+
+  </div>
+  <div class="wrapper">
+    <div id="maincontent">
+      <div class="contentainer">
+        <div class="page-header">Welcome To Owner Dashboard</div>
+        <div class="content-box">You have Sucessfully Logged in.<br />
+          Please use the Navigation to manage your Profile and Vehicles.</div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="push"></div>
+</div>
+<script type="text/javascript">
+
+</script>
+</body>
+	
 </body>
 </html>

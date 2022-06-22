@@ -1,81 +1,84 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<link rel="stylesheet" href="owner.css">
 
-<title>Insert title here</title>
-</head>
-<body>
-	<%
+	<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Owner Dashboard | OVRS</title>
+<link rel="stylesheet" href="../../assests/bootstrap/css/bootstrap.min.css">
+
+
+
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="../../assests/fonts/material-icon/css/material-design-iconic-font.min.css" />
+<link href="owner.css" rel="stylesheet" type="text/css" />
+
+<script src="<%= request.getContextPath() %>/assets-admin/js/jquery.min.js" type="text/javascript"></script>
+<script src="<%= request.getContextPath() %>/assets-admin/js/jquery.validate.js" type="text/javascript"></script>
+<script src="<%= request.getContextPath() %>/assets-admin/js/tooltip.js" type="text/javascript"></script>
+<script src="<%= request.getContextPath() %>/assets-admin/js/checks.js" type="text/javascript"></script>
+<%
+		if(session.getAttribute("email")==null){
+			response.sendRedirect("login.jsp");
+		}
 		if(session.getAttribute("userType")!="owner"){
 			response.sendRedirect("login.jsp");
 		}
-	
 	%>
-	<nav class="nav-bar">
-        <nav class="main-style">
-            <div class="logo-style">
-                <a href="../../index.jsp">
-                    <h2 class="title-style">
-                        <span>O</span>nline<span>V</span>ehicle<span>R</span>eservation
-                    </h2>
-                </a>
-            </div>
-            <div class="menu-style">
-                <ul class="tab-style">
-                    <li><a href="../../index.jsp">Home</a></li>
-                    <li><a href="">Get a Quote</a></li>
-                    <li><a href="../owner/login.jsp">Hi, ${owner_name}</a></li>
-                    <li><form action="<%= request.getContextPath() %>/ownerLogout">
-					<input type = "submit" value = "Logout" style="cursor: pointer; padding: 16px 32px; border: none;">
-					</form>
-					</li>
-                </ul>
-            </div>
-        </nav>
-    </nav>
-			<header>
-                
-                    <div>
-                        <h1>Vehicle Management</h1>
-                    </div>
-                
-            </header>
-            <br>
-            <div class="back">
-			
-        </div>
-            <div class="row">
-                
+</head>
+<body>
+<div id="main_wrapper">
+  <div class="wrapper">
+  	<div id="header">
+	<div class="logo">
+		<a href="../../index.jsp">
+			<h1>Online Vehicle Reservation</h1>
+		</a>
+	</div>
+	<div class="header-right">
+		<span class="txt1">Hello ${owner_name},</span> Welcome to your Dashboard <br />
+		<a href="<%= request.getContextPath() %>/ownerLogout">Logout</a> | <a
+			href="profile.jsp">Update Profile</a>
+	</div>
+	<div class="clear"></div>
+</div>
+<ul id="nav">
+  <li><a href="index.jsp" class=""><i class="zmdi zmdi-view-dashboard"></i> Dashboard</a></li>
+  <!-- <li><a href="#" class="menulink"><i class="fa fa-book"></i> CMS</a></li>  --> 
+</ul>
+<div class="clear"></div>
 
-                <div class="container">
-                    <h3 class="text-center">List of Vehicles</h3> 
-                    <hr>
-                    <div class="container text-left">
+<div id="nav-wrapper">
+  <ul id="subnav">
+    <li><a href="../../index.jsp" target="_blank">Preview Site</a></li>
+    <li><a href="profile.jsp">Profile</a></li>
+    <li><a href="vehicle.jsp"><b>Vehicles</b></a></li>
+    <li><a href="bookings.jsp">Bookings</a></li>
+    <li><a href="<%= request.getContextPath() %>/ownerLogout">Log Out</a></li>
+  </ul>
+  <div class="clear"></div>
+</div>
 
-                        <a href="add-vehicle.jsp" class="btn btn-success">Add New Vehicle</a>
-                    </div>
-                    <br>
-                    <div class="detail">
-                    <table class="" style="border: 1px solid black">
-
-                        <thead>
-                            <tr>
-                                <th width=3%>SN</th>
-								<th width=15%>Photo</th>
-								<th width=13%>Manufacturer</th>
-								<th width=10%>Model</th>
-								<th width=17%>Feature Status</th>
-								<th width=15%>Date From/To</th>
-								<th width=15%>Options</th>
-                            </tr>
-                            
-                        </thead>
-                        
-                        <tbody>
+  </div>
+  <div class="wrapper">
+    <div id="maincontent">
+      <div class="contentainer">
+        <div class="page-header">Vehicle Management | <a href="add-vehicle.jsp" class="btn btn-primary">Add Vehicles</a></div>
+        <div class="content-box">
+        	<table class="table table-striped">
+  			 <thead>
+			    <tr>
+			      <th scope="col">SN</th>
+			      <th scope="col">Photo</th>
+			      <th scope="col">Manufacturer</th>
+			      <th scope="col">Model</th>
+			      <th scope="col">Feature Status</th>
+			      <th scope="col">Date From / To</th>
+			      <th scope="col">Options</th>
+			    </tr>
+			  </thead>
+			  <tbody>
                         <%@page import="java.sql.*" %>
                         <% 
                         	System.out.println(session.getAttribute("owner_id"));
@@ -90,43 +93,38 @@
                     			ResultSet rs = pst.executeQuery();
                     			while(rs.next()){
                         %>
-                           
-
-                                <tr>
-                                    <td>
-                                        <%=count++%>
-                                    </td>
-                                    <td>
-                                        <img src="<%= request.getContextPath() +"/images/"+ rs.getString(10)%>" width="300" height="200"/>
-                                    </td>
-                                    <td>
-                                        <%=rs.getString(2) %>
-                                    </td>
-                                    <td>
-                                        <%=rs.getString(3) %>
-                                    </td>
-                                    <td>
-                                        <%if(rs.getString("feature_status")== null){ %>
-                                        <a href="request-feature.jsp?id=<%=rs.getString(1) %>">Request</a>
+                 <tbody>
+			    <tr>
+			      <th scope="row"><%=count++%></th>
+			      <td><img src="<%= request.getContextPath() +"/images/"+ rs.getString(10)%>" height="100"/></td>
+			      <td><%=rs.getString(2) %></td>
+			      <td><%=rs.getString(3) %></td>
+			      <td><%if(rs.getString("feature_status")== null){ %>
+                                        <a href="request-feature.jsp?id=<%=rs.getString(1)%>" class="btn btn-success">Request</a>
                                         <%}else if(rs.getString("feature_status")!= null){%>
                                         <%=rs.getString("feature_status") %>
-                                        <%} %>
-                                    </td>
-                                    <td>
-                                        <%=rs.getString(5)%><br>-<br><%=rs.getString(6) %>
-                                    </td>
-                                    <td><a href="edit-vehicle.jsp?id=<%=rs.getString(1) %>">Edit</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="delete.jsp?id=<%=rs.getString(1) %>">Delete</a></td>
-                                </tr>
-                            
-                        </tbody>
-						<%}}
-						catch(Exception e){
-							
-						}
-						%>
-                    </table>
-                    </div>
-                </div>
-            </div>
+                                        <%} %></td>
+			      <td><%=rs.getString(5)%><br>-<br><%=rs.getString(6) %></td>
+			      <td><a class="btn btn-secondary" href="edit-vehicle.jsp?id=<%=rs.getString(1) %>">Edit</a> <a class="btn btn-danger" href="delete.jsp?id=<%=rs.getString(1) %>">Delete</a></td>
+			    </tr>
+			    </tbody>
+			    <%}}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+     %>
+  		</table>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="push"></div>
+</div>
+<script type="text/javascript">
+
+</script>
 </body>
+	
+
 </html>

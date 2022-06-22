@@ -16,21 +16,14 @@ li{
 }
 
 .Rent{
-	background: cyan;
-    height: 100px;
-    width: 50%;
-    position: relative;
     color: black;
     top: 40%;
     left: 50%;
-    transform: translate(-50%,-50%);
-    padding:2rem;
     margin: 20px;
     border: none;
-    border-bottom: 1px solid black;
     text-align: center;
     size: 3rem;
-    margin-top:12rem;
+    margin-top:7rem;
     border-radius: 10px 10px 10px 10px;
     box-sizing: content-box;
 }
